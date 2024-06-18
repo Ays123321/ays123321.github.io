@@ -9,14 +9,14 @@
 <body>
     <div class="container">
         <h1>Lán Sè Translator</h1>
-        <form id="translateForm" method="GET" action="translate.php">
+        <form id="translateForm" method="POST" action="translate.php">
             <textarea name="text" id="inputText" placeholder="Enter text to translate..."></textarea>
             <button type="submit">Translate</button>
         </form>
         <div id="outputText">
             <?php
-            if (isset($_GET['text'])) {
-                $text = $_GET['text'];
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['text'])) {
+                $text = $_POST['text'];
 
                 // Translations array
                 $translations = [
